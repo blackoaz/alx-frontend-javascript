@@ -1,12 +1,9 @@
 export default function cleanSet(set, startString) {
-  if (!(set instanceof Set) || typeof startString !== 'string') {
-    throw new Error('Invalid input types');
+    const resultArray = [];
+    set.forEach(value => {
+      if (startString === undefined || (startString !== '' && value.startsWith(startString))) {
+        resultArray.push(value.substring(startString.length));
+      }
+    });
+    return resultArray.join('-');
   }
-  if (startString === '') {
-    return '';
-  }
-  const filteredValues = Array.from(set).filter((value) => value.startsWith(startString));
-  const resultString = filteredValues.map((value) => value.slice(startString.length)).join('-');
-
-  return resultString;
-}
