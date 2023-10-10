@@ -33,3 +33,16 @@ const director1: Directors = {
     numberOfReports: 17,
   };
   console.log(director1);
+
+
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string
+}
+
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+    const initial = firstName.charAt(0);
+    const fullName = `${initial}. ${lastName}`;
+    return fullName;
+}
+
+console.log(printTeacher('Jane', 'Doe'))
